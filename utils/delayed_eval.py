@@ -2,7 +2,7 @@ import torch
 import math
 from time import time
 from tqdm import tqdm
-from tte_methods.memo_transforms import te_transforms_inc
+from utils.memo_transforms import te_transforms_inc
 from utils.third_party_memo import imagenet_r_mask
 
 def compute_time(model, val_loader, device):

@@ -10,7 +10,7 @@ import torch.nn as nn
 import torch.jit
 import math
 import numpy as np
-from tte_methods.sam import SAM
+from utils.sam import SAM
 
 
 def update_ema(ema, new_data):

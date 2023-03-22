@@ -29,7 +29,7 @@ def get_args():
     parser.add_argument('--initial_batch_size', default=1, type=int, help='batch size for delay computation (default: 1)')
     
     # path of data, output dirspatial_dim_size
-    parser.add_argument('--dataset', default='imagenetc', help='imagenetc or generated_imagenetc', choices=['imagenetc', 'generated_imagenetc', 'imagenet3dcc', 'imagenetr'])
+    parser.add_argument('--dataset', default='imagenetc', help='imagenetc or imagenetr or imagenet3dcc', choices=['imagenetc', 'imagenet3dcc', 'imagenetr'])
     parser.add_argument('--imagenet_path', default='/ibex/ai/reference/CV/ILSVR/classification-localization/data/jpeg/', help='path to imagenetc dataset')
     parser.add_argument('--imagenetc_path', default='/ibex/ai/reference/CV/ImageNet-C', help='path to imagenetc dataset')
     parser.add_argument('--generated_imagenetc_path', default='./data/ImageNet/Generated_ImageNet-C', help='path to generated imagenetc dataset')
