@@ -28,22 +28,6 @@ def ImageNet_C_data(corruption: str, level: int, data_dir: str, batch_size: int,
     data_loader = DataLoader(dataset, batch_size=batch_size, shuffle=shuffle)
     return dataset if return_dataset else data_loader
 
-def Generated_ImageNet_C_data(args):
-
-    corrupt_transform = transforms.Compose([
-        transforms.ToTensor(),
-        transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225))
-        ])
-
-    dataset = ImageNetCorruption_pth(args.imagenet_path, args.generated_imagenetc_path, corruption_name=args.corruption, level=args.level, transform=corrupt_transform, is_carry_index=False)
-
-    dataloader = torch.utils.data.DataLoader(dataset, 
-                batch_size=args.batch_size, 
-                shuffle=args.shuffle, 
-                num_workers=args.workers, 
-                pin_memory=True, 
-                drop_last=False)
-    return dataloader
 
 def ImageNet_val_subset_data(data_dir: str, batch_size: int, shuffle: bool, subset_size: int, with_transforms: bool = True, return_dataset:bool = False):
 
@@ -115,8 +99,6 @@ def get_dataloader(args):
         corrupted_dataloader  = ImageNet_C_data(corruption=args.corruption, level=args.level, 
                                                 data_dir=args.imagenetc_path, batch_size=args.batch_size, 
                                                 shuffle=args.shuffle, with_transforms=args.transforms, return_dataset=args.r_dataset)
-    elif args.dataset == 'generated_imagenetc':
-        corrupted_dataloader = Generated_ImageNet_C_data(args)
 
     elif args.dataset == 'imagenet3dcc': 
         # The same procedure as for ImageNetC should work. The only difference is using `args.imagenet3dcc_path` instead of `args.imagenetc_path`
@@ -129,55 +111,28 @@ def get_dataloader(args):
 
     return corrupted_dataloader
     
-def get_cp(dataset_name):
-    if dataset_name in ['imagenetc', 'generated_imagenetc']:
+def get_cp(args):
+    # Episodic Experiments
+    if args.dataset == 'imagenetr':
+        return ['imagenetr']
+    
+    if args.corruption not in ['all', 'all_ordered']:
+        return [args.corruption]
+    
+    # Continual Experiments
+    if args.dataset == 'imagenetc':
         corrupts = ['gaussian_noise', 'shot_noise', 'impulse_noise', 'defocus_blur', 'glass_blur', \
                         'motion_blur', 'zoom_blur', 'snow', 'frost', 'fog', 'brightness', 'contrast', \
                         'elastic_transform', 'pixelate', 'jpeg_compression']
     else:
-        print(f"=======> WARNING!!!! There are still some corruptions that haven't been downloaded")
         corrupts = ['bit_error', 'color_quant', 'far_focus', 'flash', 'fog_3d', 'h265_abr', 'h265_crf', \
                         'iso_noise', 'low_light', 'near_focus', 'xy_motion_blur', 'z_motion_blur']
-     
-    random.shuffle(corrupts)
-    # n = len(c)
-    # c_p = list()
-    # for i in range(len(c)):
-    #     n=len(c)
-    #     index = random.randint(0, n - 1)
-    #     c[index], c[n - 1] = c[n - 1], c[index]
-    #     c_p.append(c.pop())
-    print("order of corruptions: ")
-    print(corrupts)
+        
+    if args.corruption == 'all': #random order of all corruptions (experiment in Appendix)
+        random.shuffle(corrupts)
+    
+    # Add clean validation set.
+    if args.test_val:
+        corrupts = [*corrupts,'val']
+        
     return corrupts 
-
-# class TTAC_ImageNetCorruption_Folder(datasets.ImageFolder):
-#     def __init__(self, root, corruption_name, level=5, transform=None, is_carry_index=False):
-#         super().__init__(os.path.join(root, corruption_name, str(level)), transform=transform)
-#         self.root = root
-#         self.corruption_name = corruption_name
-#         self.transform = transform
-#         self.is_carry_index = is_carry_index
-    
-#     def __getitem__(self, index):
-#         path, target = self.samples[index]
-#         img = self.loader(path)
-#         if self.transform is not None:
-#             img = self.transform(img)
-#         if self.is_carry_index:
-#             img = [img, index]
-#         return img, target
-
-# class TTAC_ImageNet_Folder(datasets.ImageFolder):
-#     def __init__(self, root, split, transform=None, is_carry_index=False):
-#         super().__init__(os.path.join(root,split), transform=transform)
-#         self.is_carry_index = is_carry_index
-    
-#     def __getitem__(self, index: int):
-#         img, target = super().__getitem__(index)
-#         if self.is_carry_index:
-#             if type(img) == list:
-#                 img.append(index)
-#             else:
-#                 img = [img, index]
-#         return img, target

@@ -16,28 +16,23 @@ _all_corruptions = ['all', 'all_ordered', *_common_corruptions, *_3dcc_corruptio
 def get_args():
 
     parser = argparse.ArgumentParser(description='PyTorch ImageNet-C Testing')
-    parser.add_argument('--runs', default=10, type=int, help='how many runs to compute median delay')
-    parser.add_argument('--delay', default='online', choices=['average', 'online', 'reproduce'], type=str, help='delay in case you want to test the method on other delays')
-    parser.add_argument('--delay_value', default=1, type=float, help='delay value in case you want to test the method on other delays, default is 1 to reproduce the results in the papers')
-    
+    # parser.add_argument('--delay', default='online', choices=['average', 'online', 'reproduce'], type=str, help='delay in case you want to test the method on other delays')
+    parser.add_argument('--eta', default=1, type=float, help='relative stream speed. eta=0 means no skipping. eta=1 means stream is as fast as regular forward pass.')
+    parser.add_argument('--steps', type=int, default=1, help='How many optimization steps to perform')
     parser.add_argument('--single_model', default=False, action='store_true', help='evaluate assuming a single model can be deployed')
     
     parser.add_argument('--use_wandb', default=False, action='store_true', help='use wandb for logging')
-    
-    parser.add_argument('--initial_data_size', default=500, type=int, help='initial data size to compute delay (default: 500)')
-    parser.add_argument('--spatial_dim_size', default=224, type=int, help='image spatial dimension (default: 224)')
-    parser.add_argument('--initial_batch_size', default=1, type=int, help='batch size for delay computation (default: 1)')
     
     # path of data, output dirspatial_dim_size
     parser.add_argument('--dataset', default='imagenetc', help='imagenetc or imagenetr or imagenet3dcc', choices=['imagenetc', 'imagenet3dcc', 'imagenetr'])
     parser.add_argument('--imagenet_path', default='/ibex/ai/reference/CV/ILSVR/classification-localization/data/jpeg/', help='path to imagenetc dataset')
     parser.add_argument('--imagenetc_path', default='/ibex/ai/reference/CV/ImageNet-C', help='path to imagenetc dataset')
-    parser.add_argument('--generated_imagenetc_path', default='./data/ImageNet/Generated_ImageNet-C', help='path to generated imagenetc dataset')
+    # parser.add_argument('--generated_imagenetc_path', default='./data/ImageNet/Generated_ImageNet-C', help='path to generated imagenetc dataset')
     parser.add_argument('--imagenetr_path', default='/ibex/ai/reference/CV/imagenet-r', help='path to ImageNet-R dataset')
     parser.add_argument('--imagenet3dcc_path', default='/ibex/ai/reference/CV/ImageNet-3DCC', # default='/ibex/scratch/projects/c2138/juan/ImageNet-3DCC', 
                         help='path to ImageNet-3DCC dataset') # provisionally!!! <<----
 
-    parser.add_argument('--finetune_val', default=False, action='store_true', help='add imagenet val at begining of experiment')
+    # parser.add_argument('--finetune_val', default=False, action='store_true', help='add imagenet val at begining of experiment')
     parser.add_argument('--test_val', default=False, action='store_true', help='add imagenet val at end of experiment')
 
     parser.add_argument('--output', default='./output/', help='the output directory of this experiment')
@@ -60,7 +55,6 @@ def get_args():
     
     # optimizer related parameters
     parser.add_argument('--optimizer', type=str, default='sgd', help='Which optimizer to use')
-    parser.add_argument('--steps', type=int, default=1, help='How many optimization steps to perform')
 
     # EATA and ETA specific hyperparameters
     parser.add_argument('--fisher_size', type=float, default=2000, help='Number of samples on which fishers are computed over')
@@ -82,7 +76,7 @@ def get_args():
     
     ######## Not used args but could be useful for future
     parser.add_argument('--arch', default='resnet50', type=str, help='the default model architecture') # not used for now   
-    parser.add_argument('--data', default='ImageNet', help='path to dataset') #not used for now
+    # parser.add_argument('--data', default='ImageNet', help='path to dataset') #not used for now
     # overall experimental settings
     # 'cotinual' means the model parameters will never be reset, also called online adaptation; 
     # 'each_shift_reset' means after each type of distribution shift, e.g., ImageNet-C Gaussian Noise Level 5, the model parameters will be reset.
@@ -95,10 +89,19 @@ def get_args():
     parser.add_argument('--return_dataset', dest='r_dataset', action='store_true', help='return dataset instead of dataloader useful if want to interate one-by-one')
     parser.add_argument('--no_return_dataset', dest='r_dataset', action='store_false', help='return dataset instead of dataloader useful if want to interate one-by-one')
     parser.set_defaults(r_dataset = False)
+
+    # Arguments for average complexity calculations
+    parser.add_argument('--runs', default=10, type=int, help='how many runs to compute median delay')
+    parser.add_argument('--initial_data_size', default=500, type=int, help='initial data size to compute delay (default: 500)')
+    parser.add_argument('--spatial_dim_size', default=224, type=int, help='image spatial dimension (default: 224)')
+    parser.add_argument('--initial_batch_size', default=1, type=int, help='batch size for delay computation (default: 1)')
     args = parser.parse_args()
 
+    if args.method == 'memo':
+        args.r_dataset = True
+        args.transforms = False
     
-    args.output = os.path.join(args.output, args.dataset, args.method, args.method + '_' + args.delay)
+    args.output = os.path.join(args.output, args.dataset, args.method, args.method + str(args.eta))
     # args.output = os.path.join(args.output, args.dataset, args.method + '_' + str(args.delay))
     # args.output = os.path.join(args.output, args.corruption + '_' + str(args.level))
     if not os.path.exists(args.output):

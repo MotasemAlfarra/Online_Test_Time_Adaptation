@@ -4,7 +4,7 @@ import torch
 import torch.nn as nn
 import torch.jit
 import torch.nn.functional as F
-from tte_methods.shot_im import SHOTIM, copy_model_and_optimizer, load_model_and_optimizer
+from tta_methods.shot_im import SHOTIM, copy_model_and_optimizer, load_model_and_optimizer
 # This code is adapted from LAME implementation of shot:
 # https://github.com/fiveai/LAME/blob/master/src/adaptation/shot.py
 # Check https://github.com/fiveai/LAME/tree/master/configs/method/default for optimal parameters for tent,shot,adabn,lame
