@@ -5,7 +5,7 @@ from tqdm import tqdm
 from utils.memo_transforms import te_transforms_inc
 from utils.third_party_memo import imagenet_r_mask
 
-def delayed_eval_online(model, data_loader, delay, device, dataset_name, single_model=False):
+def delayed_eval_online(model, data_loader, eta, device, dataset_name, single_model=False):
     def compute_time_and_output(model, images, device, dataset_name):
         images = images.to(device)
         # Calculating the consumed time for each forward pass
@@ -19,7 +19,6 @@ def delayed_eval_online(model, data_loader, delay, device, dataset_name, single_
         return output.argmax(1), consumed_time
 
     num_samples, num_correct = 0, 0
-    stream_speed = delay
     delay = 0
     
     with torch.no_grad():        
@@ -29,7 +28,7 @@ def delayed_eval_online(model, data_loader, delay, device, dataset_name, single_
                 output, time_for_tte = compute_time_and_output(model, images, device, dataset_name)
                 _, time_for_base = compute_time_and_output(model.model, images, device, dataset_name)
                 ratio = time_for_tte/time_for_base
-                delay += max(0, math.ceil(ratio * stream_speed) - 1)
+                delay += max(0, math.ceil(ratio * eta) - 1)
             else: # Previous expensive algorithm is still running
                 if single_model:
                     output = torch.randint(0, len(data_loader.dataset.classes), (images.shape[0],), device=device)

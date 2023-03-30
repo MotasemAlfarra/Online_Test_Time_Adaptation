@@ -35,7 +35,7 @@ def main(args):
         delayed_func = delayed_eval_online_memo if args.method == 'memo' else delayed_eval_online
 
         # Evaluating the model
-        adjusted_acc, tta_method = delayed_func(tta_method, corrupted_dataloader, delay=args.eta, \
+        adjusted_acc, tta_method = delayed_func(tta_method, corrupted_dataloader, eta=args.eta, \
                                                 device=args.device, dataset_name=args.dataset, single_model=args.single_model)
 
         # logger.info(args.corruption)
