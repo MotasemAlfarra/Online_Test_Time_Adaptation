@@ -41,7 +41,7 @@ def delayed_eval_online(model, data_loader, eta, device, dataset_name, single_mo
     return num_correct/num_samples, model
 
 
-def delayed_eval_online_memo(model, dataset, delay, device, dataset_name, **kwargs):
+def delayed_eval_online_memo(model, dataset, eta, device, dataset_name, **kwargs):
     def compute_time_and_output(model, images, device, dataset_name):
         # images = images.to(device)
         # Calculating the consumed time for each forward pass
@@ -61,7 +61,7 @@ def delayed_eval_online_memo(model, dataset, delay, device, dataset_name, **kwar
         if delay == 0: # Compute the output and delay for this batch
             output, time_for_tte = compute_time_and_output(model, images, device, dataset_name)
             _, time_for_base = compute_time_and_output(model.model, te_transforms_inc(images).unsqueeze(0).cuda(), device, dataset_name)
-            delay += max(0, math.ceil(time_for_tte/time_for_base) - 1)
+            delay += max(0, math.ceil(eta * time_for_tte/time_for_base) - 1)
         else: # Previous expensive algorithm is still running
             output = model.model(te_transforms_inc(images).unsqueeze(0).cuda())
             if dataset_name == 'imagenetr':
