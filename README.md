@@ -3,6 +3,8 @@
 
 ![plot](./pipeline.png)
 
+Paper: [Link_To_Paper]()
+
 This benchmark is a step towards standardizing the evaluation of Test Time Adaptation (TTA) methods. We have implementations of 14 different TTA methods from the literature. The following table reports the average episodic error rate (%) of the implemented methods under the offline and online evaluation schemes on ImageNet-C.
 
 |Method |Paper| Code| Offline Eval. | Online Eval.|
