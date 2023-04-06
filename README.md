@@ -37,6 +37,8 @@ All datasets are publicly available and can be downloaded from their correspondi
 - ImageNet-R: [here](https://github.com/hendrycks/imagenet-r)
 - ImageNet-3DCC: [here](https://github.com/EPFL-VILAB/3DCommonCorruptions)
 
+For ImageNet-C and ImageNet-3DCC, the data should be organized as `PATH/COURRUPTION/SEVERITY/*`.
+
 ## Online Evaluation of TTA Methods
 Our paper evaluates the efficacy of TTA methods when data arrives a stream with constant speed.
 We simulate that by assuming that the rate in which the stream reveals new data is $\eta * r$ where $r$ is the speed of the forward pass of non-adapted model and $\eta \in [0, 1]$. Hence, as $\eta \rightarrow 0$, then all TTA methods will adapt to all revealed samples as the stream is revealing data in a very small rate.
