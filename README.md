@@ -37,7 +37,7 @@ All datasets are publicly available and can be downloaded from their correspondi
 
 ## Online Evaluation of TTA Methods
 Our paper evaluates the efficacy of TTA methods when data arrives a stream with constant speed.
-We simulate that by assuming that the rate in which the stream reveals new data is $\eta r$ where $r$ is the speed of the forward pass of non-adapted model and $\eta \in [0, 1]$. Hence, as $\eta \rightarrow 0$, then all TTA methods will adapt to all revealed samples as the stream is revealing data in a very small rate.
+We simulate that by assuming that the rate in which the stream reveals new data is $\eta * r$ where $r$ is the speed of the forward pass of non-adapted model and $\eta \in [0, 1]$. Hence, as $\eta \rightarrow 0$, then all TTA methods will adapt to all revealed samples as the stream is revealing data in a very small rate.
 As $\eta \rightarrow 1$, then the stream is revealing data in a fast rate penalizing slow TTA methods by allowing them to adapt on fewer samples.
 
 ## Evaluating TTA Methods
@@ -51,8 +51,14 @@ To evaluate a TTA method under different stream speeds, run:
 python main.py --eta [ETA] --method [METHOD] --dataset [DATASET] --corruption [CORRUPTION] --severity [SEVERITY] --imagenetc_path [PATH] --output [OUTPUT_PATH]
 ```
 where
-- ETA is a value between 0 and 1 representing $\eta$ in our paper for varying the stream speed.
-- METHOD is a TTA method which should belong to `['basic', 'tent', 'eta', 'eata', 'cotta', 'ttac_nq', 'memo', 'adabn', 'shot', 'shotim', 'lame', 'bn_adaptation', 'pl',  'sar', 'dda']`.
+- ETA: is a float between 0 and 1 representing $\eta$ in our paper for varying the stream speed. Default value is $\eta = 1$ which corresponds to online evaluation.
+- METHOD: is a TTA method which should belong to `['basic', 'tent', 'eta', 'eata', 'cotta', 'ttac_nq', 'memo', 'adabn', 'shot', 'shotim', 'lame', 'bn_adaptation', 'pl',  'sar', 'dda']`.
+- DATASET: should belong to `[imagenetc, imagenetr, imagenet3dcc]`.
+- CORRUPTION: is the type of corruption you would like to evaluate on. For ImageNet-C, the corruptions are `['gaussian_noise', 'shot_noise', 'impulse_noise', 'defocus_blur', 'glass_blur', 'motion_blur', 'zoom_blur', 'snow', 'frost', 'fog', 'brightness', 'contrast', 'elastic_transform', 'pixelate', 'jpeg_compression']` where for ImageNet-3DCC `['bit_error', 'color_quant', 'far_focus', 'flash', 'fog_3d', 'h265_abr', 'h265_crf', 'iso_noise', 'low_light', 'near_focus', 'xy_motion_blur', 'z_motion_blur']`. For ImageNet-R, do not pass the `--corruption`.
+- SEVERITY: is an integer between 1 and 5 to determine how severe the corruption is. All our results are done with a severity of 5.
+- PATH: is the path for for ImageNet-C dataset. The data should be in the format `PATH/COURRUPTION/SEVERITY/*`. If you are evaluating on ImageNet-3DCC or ImageNet-R, then replace `--imagenetc_path` with `--imagenet3dcc_path` or `--imagenetr_path`.
+- OUTPUT: is the output path to save the results of the evaluation.
+
 
 
 ### Continual Evaluation
