@@ -1,8 +1,7 @@
-# Online_Test_Time_Adaptation
+<!-- # Online_Test_Time_Adaptation -->
+# Revisiting Test Time Adaptation Under Online Evaluation
 
-## Revisiting Test Time Adaptation Under Online Evaluation
-
-![plot](./pipeline.pdf)
+![plot](./pipeline.png)
 
 This benchmark is a step towards standardizing the evaluation of Test Time Adaptation (TTA) methods. We have implementations of 14 different TTA methods from the literature. 
 
