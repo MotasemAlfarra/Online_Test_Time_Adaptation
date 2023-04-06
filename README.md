@@ -41,9 +41,28 @@ We simulate that by assuming that the rate in which the stream reveals new data 
 As $\eta \rightarrow 1$, then the stream is revealing data in a fast rate penalizing slow TTA methods by allowing them to adapt on fewer samples.
 
 ## Evaluating TTA Methods
+We considered two different evaluation schemes in our work: episodic evaluation and continual evaluation.
+Episodic evaluation evaluates a given TTA method on a single domain shift, e.g. one corruption. 
+Continual evaluation evaluates a given TTA method on a sequence of domain shifts continually without resetting the parameters of the model.
+
+### Episodic Evaluation
+To evaluate a TTA method under different stream speeds, run:
+```
+python main.py --eta [ETA] --method [METHOD] --dataset [DATASET] --corruption [CORRUPTION] --severity [SEVERITY] --imagenetc_path [PATH] --output [OUTPUT_PATH]
+```
+where
+- ETA is a value between 0 and 1 representing $\eta$ in our paper for varying the stream speed.
+- METHOD is a TTA method which should belong to `['basic', 'tent', 'eta', 'eata', 'cotta', 'ttac_nq', 'memo', 'adabn', 'shot', 'shotim', 'lame', 'bn_adaptation', 'pl',  'sar', 'dda']`.
+
+
+### Continual Evaluation
 
 
 ## Adding New TTA Methods
+
+
+## Citation
+If you find our work useful, please consider citing our paper:
 
 
 
