@@ -4,7 +4,7 @@ import math
 from tta_methods import _all_methods as ALL_METHODS
 
 # _all_methods = ['basic', 'tent', 'eta', 'eata', 'cotta', 'ttac_nq', 'memo', 'adabn', 'shot', 'shotim', 'lame', 'bn_adaptation', 'pl', 'sar', 'dda']
-_all_methods = ALL_METHODS.keys()
+_all_methods = list(ALL_METHODS.keys())
 
 _common_corruptions = ['gaussian_noise', 'shot_noise', 'impulse_noise', 'defocus_blur', 'glass_blur',
 	                    'motion_blur', 'zoom_blur', 'snow', 'frost', 'fog',
