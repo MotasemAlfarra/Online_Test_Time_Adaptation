@@ -74,6 +74,11 @@ Note that the main difference is passing `--exp_type continual`.
 All the remaining arguments follow our episodic evaluation.
 
 ### Single Model Experiments
+To test a given TTA method in a single model evaluation scheme, following Section 4.6, run:
+```
+python main.py --single_model --eta [ETA] --method [METHOD] --dataset [DATASET] --corruption [CORRUPTION] --severity [SEVERITY] --imagenetc_path [PATH] --output [OUTPUT_PATH] --batch_size [BATCH_SIZE]
+```
+where all other arguments follow our episodic evaluation.
 
 ## Adding New TTA Methods
 
