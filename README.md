@@ -61,12 +61,15 @@ where
 - ETA: is a float between 0 and 1 representing $\eta$ in our paper for varying the stream speed. Default value is $\eta = 1$ which corresponds to online evaluation.
 - METHOD: is a TTA method which should belong to `['basic', 'tent', 'eta', 'eata', 'cotta', 'ttac_nq', 'memo', 'adabn', 'shot', 'shotim', 'lame', 'bn_adaptation', 'pl',  'sar', 'dda']`.
 - DATASET: should belong to `[imagenetc, imagenetr, imagenet3dcc]`.
-- CORRUPTION: is the type of corruption you would like to evaluate on. For ImageNet-C, the corruptions are `['gaussian_noise', 'shot_noise', 'impulse_noise', 'defocus_blur', 'glass_blur', 'motion_blur', 'zoom_blur', 'snow', 'frost', 'fog', 'brightness', 'contrast', 'elastic_transform', 'pixelate', 'jpeg_compression']` where for ImageNet-3DCC `['bit_error', 'color_quant', 'far_focus', 'flash', 'fog_3d', 'h265_abr', 'h265_crf', 'iso_noise', 'low_light', 'near_focus', 'xy_motion_blur', 'z_motion_blur']`. For ImageNet-R, do not pass the `--corruption`.
+- CORRUPTION: is the type of corruption you would like to evaluate on. 
+    - ImageNet-C corruptions: `['gaussian_noise', 'shot_noise', 'impulse_noise', 'defocus_blur', 'glass_blur', 'motion_blur', 'zoom_blur', 'snow', 'frost', 'fog', 'brightness', 'contrast', 'elastic_transform', 'pixelate', 'jpeg_compression']`.
+
+    - ImageNet-3DCC corruptions: `['bit_error', 'color_quant', 'far_focus', 'flash', 'fog_3d', 'h265_abr', 'h265_crf', 'iso_noise', 'low_light', 'near_focus', 'xy_motion_blur', 'z_motion_blur']`.
+    - For ImageNet-R, do not pass the `--corruption`.
 - SEVERITY: is an integer between 1 and 5 to determine how severe the corruption is. All our results are done with a severity of 5.
 - PATH: is the path for for ImageNet-C dataset. The data should be in the format `PATH/COURRUPTION/SEVERITY/*`. If you are evaluating on ImageNet-3DCC or ImageNet-R, then replace `--imagenetc_path` with `--imagenet3dcc_path` or `--imagenetr_path`.
 - OUTPUT: is the output path to save the results of the evaluation.
-- BATCH_SIZE: is the batch size of the validation loader. For all of our experiments, we fixed the batch size to 64. 
-
+- BATCH_SIZE: is the batch size of the validation loader. For all of our experiments, we fixed the batch size to 64.
 
 ### Continual Evaluation
 To test a given TTA method under a continual sequence of domain shifts, run:
