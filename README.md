@@ -22,7 +22,7 @@ This benchmark is a step towards standardizing the evaluation of Test Time Adapt
 We evaluate all considered methods with varying the rate in which the stream of data is revealing new batches for the TTA method.
 
 |Method |PAPER| CODE|
-|------|-----|----|
+|------|-------|------|
 |AdaBN|[(paper)](https://arxiv.org/abs/1603.04779)|[(code)](https://github.com/erlendd/ddan)|
 |SHOT and SHOT-IM|[(paper)](https://arxiv.org/abs/2002.08546)|[(code)](https://github.com/fiveai/LAME/blob/master/src/adaptation/shot.py)|
 |TENT| [(paper)](https://openreview.net/pdf?id=uXl3bZLkr3c)|[(code)](https://github.com/DequanWang/tent)|
