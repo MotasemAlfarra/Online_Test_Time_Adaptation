@@ -1,9 +1,12 @@
 # Online_Test_Time_Adaptation
-Revisiting Test Time Adaptation Under Online Evaluation
 
-This benchmark is a step towards standardizing the evaluation of Test Time Adaptation (TTA) methods. We have implementations of 14 different TTA methods from the literature:
+## Revisiting Test Time Adaptation Under Online Evaluation
 
-- Source / Non-Adapted
+![plot](./pipeline.pdf)
+
+This benchmark is a step towards standardizing the evaluation of Test Time Adaptation (TTA) methods. We have implementations of 14 different TTA methods from the literature. 
+
+- Source / Non-Adapted: Pretrained model from  
 - AdaBN : 
 - SHOT and SHOT-IM :
 - TENT : 
@@ -22,7 +25,7 @@ We evaluate all considered methods with varying the rate in which the stream of 
 ## Environment Installation
 To use our code, first you might need to install our environment through running:
 
-conda env install -f environment.yml
+```conda env install -f environment.yml
 
 ## Reproducing Results
 Our results are reported on 3 different benchmarks. For ImageNet-C, you might need to download the dataset from (here).
