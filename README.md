@@ -16,7 +16,7 @@ This benchmark is a step towards standardizing the evaluation of Test Time Adapt
 - ETA and EATA : [(paper)](https://arxiv.org/abs/2204.02610), [(code)](https://github.com/mr-eggplant/EATA) 
 - MEMO :  [(paper)](https://arxiv.org/abs/2110.09506), [(code)](https://github.com/zhangmarvin/memo)
 - DDA : [(paper)](https://arxiv.org/abs/2207.03442), [(code)](https://github.com/shiyegao/DDA)
-- PL : [(paper)](https://github.com/hendrycks/robustness), [(code)](https://github.com/hendrycks/robustness)
+- PL : [(paper)](https://www.researchgate.net/publication/280581078_Pseudo-Label_The_Simple_and_Efficient_Semi-Supervised_Learning_Method_for_Deep_Neural_Networks), [(code)](https://github.com/fiveai/LAME/blob/master/src/adaptation/pseudo_label.py)
 - LAME :  [(paper)](https://openaccess.thecvf.com/content/CVPR2022/papers/Boudiaf_Parameter-Free_Online_Test-Time_Adaptation_CVPR_2022_paper.pdf), [(code)](https://github.com/fiveai/LAME)
 
 We evaluate all considered methods with varying the rate in which the stream of data is revealing new batches for the TTA method.
