@@ -2,8 +2,8 @@ import torch
 import math
 from time import time
 from tqdm import tqdm
-from utils.memo_transforms import te_transforms_inc
-from utils.third_party_memo import imagenet_r_mask
+from utils.memo_utils.memo_transforms import te_transforms_inc
+from utils.memo_utils.third_party_memo import imagenet_r_mask
 
 def delayed_eval_online(model, data_loader, eta, device, dataset_name, single_model=False):
     def compute_time_and_output(model, images, device, dataset_name):

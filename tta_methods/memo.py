@@ -2,9 +2,9 @@ import torch.nn as nn
 import torch
 import torch.optim as optim
 from copy import deepcopy
-from utils.third_party_memo import aug
+from utils.memo_utils.third_party_memo import aug
 import numpy as np
-from utils.memo_transforms import te_transforms_inc
+from utils.memo_utils.memo_transforms import te_transforms_inc
 # import torch.backends.cudnn as cudnn
 # cudnn.benchmark = True
 # Batch size for memo is 64 (number of augmentations)

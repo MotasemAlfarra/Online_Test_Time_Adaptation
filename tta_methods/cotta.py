@@ -6,7 +6,7 @@ import torch.jit
 
 import PIL
 import torchvision.transforms as transforms
-import utils.cotta_transforms as my_transforms
+import utils.cotta_utils.cotta_transforms as my_transforms
 from time import time
 import logging
 
