@@ -3,7 +3,7 @@
 
 ![plot](./pipeline.png)
 
-This benchmark is a step towards standardizing the evaluation of Test Time Adaptation (TTA) methods. We have implementations of 14 different TTA methods from the literature. 
+This benchmark is a step towards standardizing the evaluation of Test Time Adaptation (TTA) methods. We have implementations of 14 different TTA methods from the literature. The following table reports the average episodic error rate of the implemented methods under the offline and online evaluation schemes on ImageNet-C.
 
 |Method |Paper| Code| Offline Eval. | Online Eval.|
 |------|-------|------|-----------|-----------|  
@@ -21,7 +21,6 @@ This benchmark is a step towards standardizing the evaluation of Test Time Adapt
 |Source|[(paper)](https://arxiv.org/abs/1512.03385)|[(code)](https://pytorch.org/vision/main/models/generated/torchvision.models.resnet50.html)| 82.0 | 82.0 |
 |LAME| [(paper)](https://openaccess.thecvf.com/content/CVPR2022/papers/Boudiaf_Parameter-Free_Online_Test-Time_Adaptation_CVPR_2022_paper.pdf)|[(code)](https://github.com/fiveai/LAME)| 82.7 | 82.7 |
 
-We evaluate all considered methods with varying the rate in which the stream of data is revealing new batches for the TTA method.
 We fixed the architecture to ResNet-50 throughout all our experimetns and used the `torchvision` pretrained weights.
 
 ## Environment Installation
