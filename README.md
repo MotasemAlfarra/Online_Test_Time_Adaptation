@@ -5,21 +5,21 @@
 
 This benchmark is a step towards standardizing the evaluation of Test Time Adaptation (TTA) methods. We have implementations of 14 different TTA methods from the literature. 
 
-|Method |Paper| Code|
-|------|-------|------|
-|ETA and EATA|[(paper)](https://arxiv.org/abs/2204.02610)|[(code)](https://github.com/mr-eggplant/EATA)|
-|SHOT and SHOT-IM|[(paper)](https://arxiv.org/abs/2002.08546)|[(code)](https://github.com/fiveai/LAME/blob/master/src/adaptation/shot.py)|
-|TENT| [(paper)](https://openreview.net/pdf?id=uXl3bZLkr3c)|[(code)](https://github.com/DequanWang/tent)|
-|SAR| [(paper)](https://openreview.net/forum?id=g2YraF75Tj)|[(code)](https://github.com/mr-eggplant/SAR)|
-|PL|[(paper)](https://www.researchgate.net/publication/280581078_Pseudo-Label_The_Simple_and_Efficient_Semi-Supervised_Learning_Method_for_Deep_Neural_Networks)|[(code)](https://github.com/fiveai/LAME/blob/master/src/adaptation/pseudo_label.py)|
-|TTAC-NQ|[(paper)](https://openreview.net/forum?id=g2YraF75Tj)|[(code)](https://github.com/Gorilla-Lab-SCUT/TTAC)|
-|BN Adaptation|[(paper)](https://arxiv.org/pdf/2006.16971v1.pdf)|[(code)](https://github.com/bethgelab/robustness/tree/main/examples/batchnorm)|
-|CoTTA|[(paper)](https://arxiv.org/abs/2203.13591)|[(code)](https://github.com/qinenergy/cotta)|
-|AdaBN|[(paper)](https://arxiv.org/abs/1603.04779)|[(code)](https://github.com/erlendd/ddan)|
-|MEMO| [(paper)](https://arxiv.org/abs/2110.09506)|[(code)](https://github.com/zhangmarvin/memo)|
-|DDA|[(paper)](https://arxiv.org/abs/2207.03442)|[(code)](https://github.com/shiyegao/DDA)|
-|Source|[(paper)](https://arxiv.org/abs/1512.03385)|-|
-|LAME| [(paper)](https://openaccess.thecvf.com/content/CVPR2022/papers/Boudiaf_Parameter-Free_Online_Test-Time_Adaptation_CVPR_2022_paper.pdf)|[(code)](https://github.com/fiveai/LAME)|
+|Method |Paper| Code| Offline Eval. | Online Eval.|
+|------|-------|------|-----------|-----------|  
+|ETA and EATA|[(paper)](https://arxiv.org/abs/2204.02610)|[(code)](https://github.com/mr-eggplant/EATA)| 52.0 | 55.6|
+|SHOT and SHOT-IM|[(paper)](https://arxiv.org/abs/2002.08546)|[(code)](https://github.com/fiveai/LAME/blob/master/src/adaptation/shot.py)| 59.9 | 59.1 | 
+|TENT| [(paper)](https://openreview.net/pdf?id=uXl3bZLkr3c)|[(code)](https://github.com/DequanWang/tent)| 57.3 | 61.6 | 
+|SAR| [(paper)](https://openreview.net/forum?id=g2YraF75Tj)|[(code)](https://github.com/mr-eggplant/SAR)| 56.2 | 63.4 |
+|PL|[(paper)](https://www.researchgate.net/publication/280581078_Pseudo-Label_The_Simple_and_Efficient_Semi-Supervised_Learning_Method_for_Deep_Neural_Networks)|[(code)](https://github.com/fiveai/LAME/blob/master/src/adaptation/pseudo_label.py)| 65.0 | 65.3|
+|TTAC-NQ|[(paper)](https://openreview.net/forum?id=g2YraF75Tj)|[(code)](https://github.com/Gorilla-Lab-SCUT/TTAC)| 59.0 | 66.5 |
+|BN Adaptation|[(paper)](https://arxiv.org/pdf/2006.16971v1.pdf)|[(code)](https://github.com/bethgelab/robustness/tree/main/examples/batchnorm)| 66.7 | 77.7
+|CoTTA|[(paper)](https://arxiv.org/abs/2203.13591)|[(code)](https://github.com/qinenergy/cotta)| 61.5 | 68.0 |
+|AdaBN|[(paper)](https://arxiv.org/abs/1603.04779)|[(code)](https://github.com/erlendd/ddan)| 68.5 | 68.5 |
+|MEMO| [(paper)](https://arxiv.org/abs/2110.09506)|[(code)](https://github.com/zhangmarvin/memo) | 76.3 | 81.9 |
+|DDA|[(paper)](https://arxiv.org/abs/2207.03442)|[(code)](https://github.com/shiyegao/DDA)| 64.4 | 82.0 |
+|Source|[(paper)](https://arxiv.org/abs/1512.03385)|-| 82.0 | 82.0 |
+|LAME| [(paper)](https://openaccess.thecvf.com/content/CVPR2022/papers/Boudiaf_Parameter-Free_Online_Test-Time_Adaptation_CVPR_2022_paper.pdf)|[(code)](https://github.com/fiveai/LAME)| 82.7 | 82.7 |
 
 We evaluate all considered methods with varying the rate in which the stream of data is revealing new batches for the TTA method.
 We fixed the architecture to ResNet-50 throughout all our experimetns and used the `torchvision` pretrained weights.
