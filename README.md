@@ -21,6 +21,11 @@ This benchmark is a step towards standardizing the evaluation of Test Time Adapt
 
 We evaluate all considered methods with varying the rate in which the stream of data is revealing new batches for the TTA method.
 
+|Name |Quantity|
+|-----|--------|
+|Apple|3       |
+|Egg  |12      |
+
 ## Environment Installation
 To use our code, first you might need to install our environment through running:
 
