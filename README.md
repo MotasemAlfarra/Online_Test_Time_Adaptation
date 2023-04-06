@@ -7,21 +7,21 @@ Paper: [Link_To_Paper]()
 
 This benchmark is a step towards standardizing the evaluation of Test Time Adaptation (TTA) methods. We have implementations of 14 different TTA methods from the literature. The following table reports the average episodic error rate (%) of the implemented methods under the offline and online evaluation schemes on ImageNet-C.
 
-|Method |Paper| Code| Offline Eval. (%)| Online Eval. (%)|
-|------|-------|------|:-----------:|:-----------:|
-|ETA / EATA|[(paper)](https://arxiv.org/abs/2204.02610)|[(code)](https://github.com/mr-eggplant/EATA)| 52.0 | 55.6|
-|SHOT / SHOT-IM|[(paper)](https://arxiv.org/abs/2002.08546)|[(code)](https://github.com/fiveai/LAME/blob/master/src/adaptation/shot.py)| 59.9 | 59.1 | 
-|TENT| [(paper)](https://openreview.net/pdf?id=uXl3bZLkr3c)|[(code)](https://github.com/DequanWang/tent)| 57.3 | 61.6 | 
-|SAR| [(paper)](https://openreview.net/forum?id=g2YraF75Tj)|[(code)](https://github.com/mr-eggplant/SAR)| 56.2 | 63.4 |
-|PL|[(paper)](https://www.researchgate.net/publication/280581078_Pseudo-Label_The_Simple_and_Efficient_Semi-Supervised_Learning_Method_for_Deep_Neural_Networks)|[(code)](https://github.com/fiveai/LAME/blob/master/src/adaptation/pseudo_label.py)| 65.0 | 65.3|
-|TTAC-NQ|[(paper)](https://openreview.net/forum?id=g2YraF75Tj)|[(code)](https://github.com/Gorilla-Lab-SCUT/TTAC)| 59.0 | 66.5 |
-|BN Adaptation|[(paper)](https://arxiv.org/pdf/2006.16971v1.pdf)|[(code)](https://github.com/bethgelab/robustness/tree/main/examples/batchnorm)| 66.7 | 66.7
-|CoTTA|[(paper)](https://arxiv.org/abs/2203.13591)|[(code)](https://github.com/qinenergy/cotta)| 61.5 | 68.0 |
-|AdaBN|[(paper)](https://arxiv.org/abs/1603.04779)|[(code)](https://github.com/erlendd/ddan)| 68.5 | 68.5 |
-|MEMO| [(paper)](https://arxiv.org/abs/2110.09506)|[(code)](https://github.com/zhangmarvin/memo) | 76.3 | 81.9 |
-|DDA|[(paper)](https://arxiv.org/abs/2207.03442)|[(code)](https://github.com/shiyegao/DDA)| 64.4 | 82.0 |
-|Source|[(paper)](https://arxiv.org/abs/1512.03385)|[(code)](https://pytorch.org/vision/main/models/generated/torchvision.models.resnet50.html)| 82.0 | 82.0 |
-|LAME| [(paper)](https://openaccess.thecvf.com/content/CVPR2022/papers/Boudiaf_Parameter-Free_Online_Test-Time_Adaptation_CVPR_2022_paper.pdf)|[(code)](https://github.com/fiveai/LAME)| 82.7 | 82.7 |
+|Method | Venue |Paper| Code| Offline Eval. (%)| Online Eval. (%)|
+|------| ------|-------|------|:-----------:|:-----------:|
+|ETA / EATA| ICML'22|[(paper)](https://arxiv.org/abs/2204.02610)|[(code)](https://github.com/mr-eggplant/EATA)| 52.0 | 55.6|
+|SHOT / SHOT-IM| ICML'20|[(paper)](https://arxiv.org/abs/2002.08546)|[(code)](https://github.com/fiveai/LAME/blob/master/src/adaptation/shot.py)| 59.9 | 59.1 | 
+|TENT| ICLR'21| [(paper)](https://openreview.net/pdf?id=uXl3bZLkr3c)|[(code)](https://github.com/DequanWang/tent)| 57.3 | 61.6 | 
+|SAR| ICLR'23|[(paper)](https://openreview.net/forum?id=g2YraF75Tj)|[(code)](https://github.com/mr-eggplant/SAR)| 56.2 | 63.4 |
+|PL| ICMLW'13|[(paper)](https://www.researchgate.net/publication/280581078_Pseudo-Label_The_Simple_and_Efficient_Semi-Supervised_Learning_Method_for_Deep_Neural_Networks)|[(code)](https://github.com/fiveai/LAME/blob/master/src/adaptation/pseudo_label.py)| 65.0 | 65.3|
+|TTAC-NQ| NeurIPS'22 |[(paper)](https://openreview.net/forum?id=g2YraF75Tj)|[(code)](https://github.com/Gorilla-Lab-SCUT/TTAC)| 59.0 | 66.5 |
+|BN Adaptation| NeurIPS'20|[(paper)](https://arxiv.org/pdf/2006.16971v1.pdf)|[(code)](https://github.com/bethgelab/robustness/tree/main/examples/batchnorm)| 66.7 | 66.7
+|CoTTA|CVPR'22 |[(paper)](https://arxiv.org/abs/2203.13591)|[(code)](https://github.com/qinenergy/cotta)| 61.5 | 68.0 |
+|AdaBN| ICLR'17|[(paper)](https://arxiv.org/abs/1603.04779)|[(code)](https://github.com/erlendd/ddan)| 68.5 | 68.5 |
+|MEMO| NeurIPS'22|[(paper)](https://arxiv.org/abs/2110.09506)|[(code)](https://github.com/zhangmarvin/memo) | 76.3 | 81.9 |
+|DDA|arxiv'22|[(paper)](https://arxiv.org/abs/2207.03442)|[(code)](https://github.com/shiyegao/DDA)| 64.4 | 82.0 |
+|Source|-|[(paper)](https://arxiv.org/abs/1512.03385)|[(code)](https://pytorch.org/vision/main/models/generated/torchvision.models.resnet50.html)| 82.0 | 82.0 |
+|LAME|CVPR'22| [(paper)](https://openaccess.thecvf.com/content/CVPR2022/papers/Boudiaf_Parameter-Free_Online_Test-Time_Adaptation_CVPR_2022_paper.pdf)|[(code)](https://github.com/fiveai/LAME)| 82.7 | 82.7 |
 
 We fixed the architecture to ResNet-50 throughout all our experimetns and used the `torchvision` pretrained weights.
 
@@ -55,7 +55,7 @@ At last, we also considered single model evaluation. In this setup, a random pre
 ### Episodic Evaluation
 To evaluate a TTA method under different stream speeds, run:
 ```
-python main.py --eta [ETA] --method [METHOD] --dataset [DATASET] --corruption [CORRUPTION] --severity [SEVERITY] --imagenetc_path [PATH] --output [OUTPUT_PATH] --batch_size [BATCH_SIZE]
+python main.py --eta [ETA] --method [METHOD] --dataset [DATASET] --corruption [CORRUPTION] --severity [SEVERITY] --imagenetc_path [PATH] --batch_size [BATCH_SIZE] --output [OUTPUT_PATH]
 ```
 where
 - ETA: is a float between 0 and 1 representing $\eta$ in our paper for varying the stream speed. Default value is $\eta = 1$ which corresponds to online evaluation.
@@ -68,13 +68,13 @@ where
     - For ImageNet-R, do not pass the `--corruption`.
 - SEVERITY: is an integer between 1 and 5 to determine how severe the corruption is. All our results are done with a severity of 5.
 - PATH: is the path for for ImageNet-C dataset. The data should be in the format `PATH/COURRUPTION/SEVERITY/*`. If you are evaluating on ImageNet-3DCC or ImageNet-R, then replace `--imagenetc_path` with `--imagenet3dcc_path` or `--imagenetr_path`.
-- OUTPUT: is the output path to save the results of the evaluation.
 - BATCH_SIZE: is the batch size of the validation loader. For all of our experiments, we fixed the batch size to 64.
+- OUTPUT: is the output path to save the results of the evaluation. The output of the code is `OUTPUT/DATASET/METHOD/eta_ETA/CORRUPTION.txt` that reports both $\eta$ and the error rate.
 
 ### Continual Evaluation
 To test a given TTA method under a continual sequence of domain shifts, run:
 ```
-python main.py --exp_type continual --test_val --eta [ETA] --method [METHOD] --dataset [DATASET] --corruption [CORRUPTION] --severity [SEVERITY] --imagenetc_path [PATH] --output [OUTPUT_PATH]
+python main.py --exp_type continual --test_val --eta [ETA] --method [METHOD] --dataset [DATASET] --corruption [CORRUPTION] --severity [SEVERITY] --imagenetc_path [PATH] --batch_size [BATCH_SIZE] --output [OUTPUT_PATH]
 ```
 Note that the main difference is passing `--exp_type continual`. 
 - CORRUPTION: should belong to `['all', 'all_ordered']` where `all_ordered` sets the order of the corruptions similar to the one in Section 4.3 (Figure 3), and `all` shuffles all corruptions randomly. 
@@ -94,7 +94,7 @@ To add additional TTA methods, please follow the example in our basic wrapper `t
 After adding your new method in `tta_methods` directory, please import it in `tta_methods/__init__.py` and add it to the `_all_methods` dictionary.
 To test the efficacy of the new implemented method in the episodic evaluation scheme, run:
 ```
-python main.py --eta [ETA] --method [METHOD] --dataset [DATASET] --corruption [CORRUPTION] --severity [SEVERITY] --imagenetc_path [PATH] --output [OUTPUT_PATH] --batch_size [BATCH_SIZE]
+python main.py --eta [ETA] --method [METHOD] --dataset [DATASET] --corruption [CORRUPTION] --severity [SEVERITY] --imagenetc_path [PATH] --batch_size [BATCH_SIZE] --output [OUTPUT_PATH]
 ```
 where [METHOD] should be the added key in the `_all_methods` dictionary.
 
