@@ -44,11 +44,12 @@ As $\eta \rightarrow 1$, then the stream is revealing data in a fast rate penali
 We considered two different evaluation schemes in our work: episodic evaluation and continual evaluation.
 Episodic evaluation evaluates a given TTA method on a single domain shift, e.g. one corruption. 
 Continual evaluation evaluates a given TTA method on a sequence of domain shifts continually without resetting the parameters of the model.
+At last, we also considered single model evaluation. In this setup, a random prediction is assigned to all missed batches that TTA methods did not adapt to.
 
 ### Episodic Evaluation
 To evaluate a TTA method under different stream speeds, run:
 ```
-python main.py --eta [ETA] --method [METHOD] --dataset [DATASET] --corruption [CORRUPTION] --severity [SEVERITY] --imagenetc_path [PATH] --output [OUTPUT_PATH]
+python main.py --eta [ETA] --method [METHOD] --dataset [DATASET] --corruption [CORRUPTION] --severity [SEVERITY] --imagenetc_path [PATH] --output [OUTPUT_PATH] --batch_size [BATCH_SIZE]
 ```
 where
 - ETA: is a float between 0 and 1 representing $\eta$ in our paper for varying the stream speed. Default value is $\eta = 1$ which corresponds to online evaluation.
@@ -58,11 +59,21 @@ where
 - SEVERITY: is an integer between 1 and 5 to determine how severe the corruption is. All our results are done with a severity of 5.
 - PATH: is the path for for ImageNet-C dataset. The data should be in the format `PATH/COURRUPTION/SEVERITY/*`. If you are evaluating on ImageNet-3DCC or ImageNet-R, then replace `--imagenetc_path` with `--imagenet3dcc_path` or `--imagenetr_path`.
 - OUTPUT: is the output path to save the results of the evaluation.
-
+- BATCH_SIZE: is the batch size of the validation loader. For all of our experiments, we fixed the batch size to 64. 
 
 
 ### Continual Evaluation
+To test a given TTA method under a continual sequence of domain shifts, run:
+```
+python main.py --exp_type continual --test_val --eta [ETA] --method [METHOD] --dataset [DATASET] --corruption [CORRUPTION] --severity [SEVERITY] --imagenetc_path [PATH] --output [OUTPUT_PATH]
+```
+Note that the main difference is passing `--exp_type continual`. 
+- CORRUPTION: should belong to `['all', 'all_ordered']` where `all_ordered` sets the order of the corruptions similar to the one in Section 4.3 (Figure 3), and `all` shuffles all corruptions randomly. 
+- `--test_val`: To evaluate on the clean validation set of ImageNet at the end of the continual evaluation.
 
+All the remaining arguments follow our episodic evaluation.
+
+### Single Model Experiments
 
 ## Adding New TTA Methods
 
