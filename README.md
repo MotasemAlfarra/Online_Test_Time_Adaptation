@@ -8,7 +8,7 @@ Paper: [Link_To_Paper]()
 This benchmark is a step towards standardizing the evaluation of Test Time Adaptation (TTA) methods. We have implementations of 14 different TTA methods from the literature. The following table reports the average episodic error rate (%) of the implemented methods under the offline and online evaluation schemes on ImageNet-C.
 
 |Method |Paper| Code| Offline Eval. (%)| Online Eval. (%)|
-|------|-------|------|-----------|-----------|  
+|------|-------|------|:-----------:|:-----------:|
 |ETA / EATA|[(paper)](https://arxiv.org/abs/2204.02610)|[(code)](https://github.com/mr-eggplant/EATA)| 52.0 | 55.6|
 |SHOT / SHOT-IM|[(paper)](https://arxiv.org/abs/2002.08546)|[(code)](https://github.com/fiveai/LAME/blob/master/src/adaptation/shot.py)| 59.9 | 59.1 | 
 |TENT| [(paper)](https://openreview.net/pdf?id=uXl3bZLkr3c)|[(code)](https://github.com/DequanWang/tent)| 57.3 | 61.6 | 
