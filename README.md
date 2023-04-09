@@ -90,7 +90,7 @@ python main.py --single_model --eta [ETA] --method [METHOD] --dataset [DATASET] 
 where all other arguments follow our episodic evaluation.
 
 ## Adding New TTA Methods
-To add additional TTA methods, please follow the example in our basic wrapper `tta_methods/basic.py`. Note that each TTA method is required to have the non-adapted forward pass as the property `self.model`. This property will allow the online evaluation to pass batches that will not be adapted to the normal fowrward pass.
+To add additional TTA methods, please follow the example in our basic wrapper `tta_methods/basic.py`. Note that each TTA method is required to have the non-adapted forward pass as the property `self.model`. This property will allow the online evaluation to pass batches that will not be adapted to the normal forward pass.
 After adding your new method in `tta_methods` directory, please import it in `tta_methods/__init__.py` and add it to the `_all_methods` dictionary.
 To test the efficacy of the new implemented method in the episodic evaluation scheme, run:
 ```
