@@ -74,7 +74,7 @@ where
 ### Continual Evaluation
 To test a given TTA method under a continual sequence of domain shifts, run:
 ```
-python main.py --exp_type continual --test_val --eta [ETA] --method [METHOD] --dataset [DATASET] --corruption [CORRUPTION] --severity [SEVERITY] --imagenetc_path [PATH] --batch_size [BATCH_SIZE] --output [OUTPUT_PATH]
+python main.py --exp_type continual --test_val --eta [ETA] --method [METHOD] --dataset [DATASET] --corruption [CORRUPTION] --level [LEVEL] --imagenetc_path [PATH] --batch_size [BATCH_SIZE] --output [OUTPUT_PATH]
 ```
 Note that the main difference is passing `--exp_type continual`. 
 - CORRUPTION: should belong to `['all', 'all_ordered']` where `all_ordered` sets the order of the corruptions similar to the one in Section 4.3 (Figure 3), and `all` shuffles all corruptions randomly. 
