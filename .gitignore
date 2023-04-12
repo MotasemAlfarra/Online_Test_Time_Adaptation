@@ -3,3 +3,4 @@ output/
 wandb/
 *.sh
 slurm
+.DS_Store

@@ -101,6 +101,16 @@ where [METHOD] should be the added key in the `_all_methods` dictionary.
 ## Citation
 If you find our work useful, please consider citing our paper:
 
+```
+@misc{alfarra2023revisiting,
+      title={Revisiting Test Time Adaptation under Online Evaluation}, 
+      author={Motasem Alfarra and Hani Itani and Alejandro Pardo and Shyma Alhuwaider and Merey Ramazanova and Juan C. Pérez and Zhipeng Cai and Matthias Müller and Bernard Ghanem},
+      year={2023},
+      eprint={2304.04795},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
+```
 
 
 
