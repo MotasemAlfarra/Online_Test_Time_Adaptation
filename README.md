@@ -14,7 +14,7 @@ This benchmark is a step towards standardizing the evaluation of Test Time Adapt
 |TENT| ICLR'21| [(paper)](https://openreview.net/pdf?id=uXl3bZLkr3c)|[(code)](https://github.com/DequanWang/tent)| 57.3 | 61.6 | 
 |SAR| ICLR'23|[(paper)](https://openreview.net/forum?id=g2YraF75Tj)|[(code)](https://github.com/mr-eggplant/SAR)| 56.2 | 63.4 |
 |PL| ICMLW'13|[(paper)](https://www.researchgate.net/publication/280581078_Pseudo-Label_The_Simple_and_Efficient_Semi-Supervised_Learning_Method_for_Deep_Neural_Networks)|[(code)](https://github.com/fiveai/LAME/blob/master/src/adaptation/pseudo_label.py)| 65.0 | 65.3|
-|TTAC-NQ| NeurIPS'22 |[(paper)](https://openreview.net/forum?id=g2YraF75Tj)|[(code)](https://github.com/Gorilla-Lab-SCUT/TTAC)| 59.0 | 66.5 |
+|TTAC-NQ| NeurIPS'22 |[(paper)](https://arxiv.org/pdf/2206.02721v2.pdf)|[(code)](https://github.com/Gorilla-Lab-SCUT/TTAC)| 59.0 | 66.5 |
 |BN Adaptation| NeurIPS'20|[(paper)](https://arxiv.org/pdf/2006.16971v1.pdf)|[(code)](https://github.com/bethgelab/robustness/tree/main/examples/batchnorm)| 66.7 | 66.7
 |CoTTA|CVPR'22 |[(paper)](https://arxiv.org/abs/2203.13591)|[(code)](https://github.com/qinenergy/cotta)| 61.5 | 68.0 |
 |AdaBN| ICLR'17|[(paper)](https://arxiv.org/abs/1603.04779)|[(code)](https://github.com/erlendd/ddan)| 68.5 | 68.5 |
