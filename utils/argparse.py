@@ -29,8 +29,7 @@ def get_args():
     parser.add_argument('--imagenet_path', default='/ibex/ai/reference/CV/ILSVR/classification-localization/data/jpeg/', help='path to imagenetc dataset')
     parser.add_argument('--imagenetc_path', default='/ibex/ai/reference/CV/ImageNet-C', help='path to imagenetc dataset')
     parser.add_argument('--imagenetr_path', default='/ibex/ai/reference/CV/imagenet-r', help='path to ImageNet-R dataset')
-    parser.add_argument('--imagenet3dcc_path', default='/ibex/ai/reference/CV/ImageNet-3DCC', # default='/ibex/scratch/projects/c2138/juan/ImageNet-3DCC', 
-                        help='path to ImageNet-3DCC dataset') # provisionally!!! <<----
+    parser.add_argument('--imagenet3dcc_path', default='/ibex/ai/reference/CV/ImageNet-3DCC', help='path to ImageNet-3DCC dataset')
 
     parser.add_argument('--test_val', default=False, action='store_true', help='add imagenet val at end of experiment')
 
