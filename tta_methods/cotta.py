@@ -70,8 +70,8 @@ class CoTTA(nn.Module):
         to_aug = anchor_prob.mean(0)<0.1
         if to_aug: 
             for i in range(N):
-                x=self.denormalize(x)
-                outputs_  = self.model_ema(x=self.normalize(self.transform(x))).detach()
+                # x=self.denormalize(x)
+                outputs_  = self.model_ema(x=self.normalize(self.transform(self.denormalize(x)))).detach()
                 outputs_emas.append(outputs_)
         # Threshold choice discussed in supplementary
         if to_aug:
