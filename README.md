@@ -1,7 +1,9 @@
 <!-- # Online_Test_Time_Adaptation -->
-# Revisiting Test Time Adaptation Under Online Evaluation (ICML 2024)
+# Revisiting Test Time Adaptation Under Online Evaluation
 
 ![plot](./pipeline.png)
+
+## Accepted in the International Conference on Machine Learning (ICML 2024)
 
 Preprint: [Link_To_Paper](https://arxiv.org/pdf/2304.04795.pdf)
 
