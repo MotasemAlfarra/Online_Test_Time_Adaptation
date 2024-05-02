@@ -3,7 +3,9 @@
 
 ![plot](./pipeline.png)
 
-Paper: [Link_To_Paper](https://arxiv.org/pdf/2304.04795.pdf)
+## This paper is accepted to the International Conference on Machine Learning (ICML 2024).
+
+Preprint: [Link_To_Paper](https://arxiv.org/pdf/2304.04795.pdf)
 
 This benchmark is a step towards standardizing the evaluation of Test Time Adaptation (TTA) methods. We have implementations of 14 different TTA methods from the literature. The following table reports the average episodic error rate (%) of the implemented methods under the offline and online evaluation schemes on ImageNet-C.
 
